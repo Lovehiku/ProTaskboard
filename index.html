@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProTask Board</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/styles.css" />
+
+  <!-- JavaScript Files -->
+  <script src="./js/storage/storage.js" defer></script>
+  <script src="./js/data/tasks.js" defer></script>
+  <script src="./js/models/taskModel.js" defer></script>
+  <script src="./js/views/boardView.js" defer></script>
+  <script src="./js/dnd/dragDrop.js" defer></script>
+  <script src="./js/ui/modal.js" defer></script>
+  <script src="./js/ui/renderer.js" defer></script>
+  <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+  <!-- 🧭 Header / Top Navigation -->
+  <header class="header">
+    <h2 class="logo">ProTask Board</h2>
+
+    <div class="header-controls">
+      <!-- Search Bar -->
+      <input type="text" id="searchInput" placeholder="Search tasks..." />
+
+      <!-- Add Task Button -->
+      <button id="addTaskBtn">+ Add Task</button>
+
+      <!-- Toggle Weekly / Monthly -->
+      <div class="view-toggle">
+        <button id="weeklyView" class="active">Weekly</button>
+        <button id="monthlyView">Monthly</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🗂️ Main Board Container -->
+  <main class="main-board">
+    <!-- To Do Section -->
+    <section class="board-column" data-status="todo">
+      <h3>To Do</h3>
+      <ul class="task-list" id="todoList"></ul>
+    </section>
+
+    <!-- In Progress Section -->
+    <section class="board-column" data-status="in-progress">
+      <h3>In Progress</h3>
+      <ul class="task-list" id="inProgressList"></ul>
+    </section>
+
+    <!-- Done Section -->
+    <section class="board-column" data-status="done">
+      <h3>Done</h3>
+      <ul class="task-list" id="doneList"></ul>
+    </section>
+  </main>
+
+  <!-- 📝 Modal (Hidden by Default) -->
+  <div id="taskModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Add New Task</h3>
+
+      <form id="taskForm">
+        <label>Title</label>
+        <input type="text" id="taskTitle" required />
+
+        <label>Description</label>
+        <textarea id="taskDescription" rows="3"></textarea>
+
+        <label>Due Date</label>
+        <input type="date" id="taskDueDate" />
+
+        <label>Priority</label>
+        <select id="taskPriority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <div class="modal-actions">
+          <button type="submit" id="saveTaskBtn">Save Task</button>
+          <button type="button" id="cancelTaskBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ⚙️ Optional Footer -->
+  <footer class="footer">
+    <p>© 2025 ProTask Board — Stay Productive 🚀</p>
+  </footer>
+</body>
+</html>
